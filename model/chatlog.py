@@ -1,9 +1,9 @@
 from sqlalchemy import Column, Integer, ForeignKey, String, DateTime
 from sqlalchemy.orm import relationship
-from . import Base
+from sqlModel import Base
 
 class ChatLog(Base):
-    __tablename__ = 'chat_logs'
+    __tablename__ = 'chatlogs'
     id = Column(Integer, primary_key=True)
     sender_id = Column(Integer, ForeignKey('users.id'), nullable=False)
     receiver_id = Column(Integer, ForeignKey('users.id'), nullable=False)

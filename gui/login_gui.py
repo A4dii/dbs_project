@@ -8,6 +8,7 @@ class LoginWindow(tk.Toplevel):
     def __init__(self, parent):
         super().__init__(parent)
         self.title("Login")
+        self.user_id = None
 
         self.label_username = tk.Label(self, text="Username:")
         self.label_username.pack(padx=10, pady=5)
@@ -37,6 +38,7 @@ class LoginWindow(tk.Toplevel):
 
         # Check if a user with the entered username exists and if the password matches
         if user and user.password == password:
+            self.user_id = user.id
             # Close the session
             session.close()
 
@@ -51,6 +53,6 @@ class LoginWindow(tk.Toplevel):
 
     def open_main_window(self):
         root = tk.Tk()
-        app = MainWindow(root)
+        app = MainWindow(root, self.user_id)
         root.mainloop()
         pass

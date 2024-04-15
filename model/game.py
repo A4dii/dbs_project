@@ -1,8 +1,10 @@
 from sqlalchemy import Column, Integer, String, Float, Boolean
-from . import Base
+from sqlModel import Base
 
 class Game(Base):
     __tablename__ = 'games'
+    __table_args__ = {'extend_existing': True}
+    
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable=False)
     genre = Column(String)
